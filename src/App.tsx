@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import IndexPage from "./pages/Index";
-import "./App.css";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
 import PokemonPage from "./pages/PokemonPage";
 
-const App: React.FC = () => {
-	return (
-		<Routes>
-			<Route path="/" element={<IndexPage />} />
-			<Route path="/pokemon/:name" element={<PokemonPage />} />
-			<Route path="/type/:typeName" element={<IndexPage />} />
-		</Routes>
-	);
-};
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/pokemon/:name" element={<PokemonPage />} />
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;
