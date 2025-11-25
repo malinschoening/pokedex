@@ -1,46 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PokemonSpriteFlip from "./PokemonSpriteFlip";
+import { typeIcons, typeColors } from "../constants/config";
 import type { Pokemon } from "../types/pokemon";
+import { Star } from "lucide-react";
 
 interface Props {
 	pokemon: Pokemon;
 }
 
 const PokemonCard: React.FC<Props> = ({ pokemon }) => {
+	const mainType = pokemon.types[0].type.name;
+	const TypeIcon = typeIcons[mainType] || Star;
+
+	const [hovered, setHovered] = useState(false);
+
 	return (
 		<article className="col-md-3 mb-4" role="listitem">
-			<Link to={`/pokemon/${pokemon.name}`} className="text-decoration-none" aria-label={`View details for ${pokemon.name}`}>
-				<div className="card h-100 shadow-sm">
-					<img
-						src={pokemon.sprites.front_default}
-						className="card-img-top img-fluid"
-						alt={`Image of ${pokemon.name}`}
-					/>
-
-					<div className="card-body">
-						<h2 className="card-title h5 text-capitalize">{pokemon.name}</h2>
-
-						<p className="card-text mb-2">
-							<strong>Type{pokemon.types.length > 1 ? "s" : ""}:</strong>{" "}
-							{pokemon.types.map((t) => t.type.name).join(", ")}
-						</p>
-
-						<p className="card-text mb-2">
-							<strong>Abilities:</strong>{" "}
-							{pokemon.abilities.map((a) => a.ability.name).join(", ")}
-						</p>
-
-						<ul className="list-unstyled mb-0">
-							{pokemon.stats.map((s) => (
-								<li key={s.stat.name}>
-									<strong>{s.stat.name}:</strong> {s.base_stat}
-								</li>
-							))}
-						</ul>
+			<Link
+				to={`/pokemon/${pokemon.name}`}
+				className="text-decoration-none"
+				aria-label={`View details for ${pokemon.name}`}
+			>
+				<div
+					className="card h-100 shadow-sm border-0 overflow-hidden rounded-3 hover-shadow"
+					onMouseEnter={() => setHovered(true)}
+					onMouseLeave={() => setHovered(false)}
+				>
+					<div
+						className="position-relative w-100 overflow-hidden"
+						style={{ paddingTop: "100%", backgroundColor: typeColors[mainType] }}
+					>
+						<TypeIcon
+							className="position-absolute top-50 start-50 translate-middle"
+							style={{
+								width: "120%",
+								height: "120%",
+								opacity: 0.1,
+								zIndex: 1,
+								color: "currentColor",
+							}}
+						/>
+						<div className="position-absolute top-50 start-50 translate-middle w-75 h-75" style={{ zIndex: 2 }}>
+							<PokemonSpriteFlip
+								front={pokemon.sprites.front_default}
+								back={pokemon.sprites.back_default}
+								alt={pokemon.name}
+								flipped={hovered}
+							/>
+						</div>
 					</div>
 
-					<div className="card-footer text-muted text-center">
-						#{pokemon.id.toString().padStart(3, "0")}
+					<div className="card-body d-flex flex-column align-items-center text-center">
+						<span className="text-muted fw-bold mb-1">
+							#{pokemon.id.toString().padStart(3, "0")}
+						</span>
+						<h2 className="card-title h6 text-capitalize">{pokemon.name}</h2>
+
+						<div className="d-flex flex-wrap justify-content-center mt-2">
+							{pokemon.types.map((t) => (
+								<span
+									key={t.type.name}
+									className="badge rounded-pill text-capitalize me-1 mb-1"
+									style={{ backgroundColor: typeColors[t.type.name], color: "#fff" }}
+								>
+									{t.type.name}
+								</span>
+							))}
+						</div>
 					</div>
 				</div>
 			</Link>

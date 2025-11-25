@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
 	--bs-body-bg: #ffffff !important;
 	--bs-body-color: #1f2937 !important;
@@ -10,6 +11,24 @@
 	--bs-card-bg: #ffffff !important;
 	--bs-card-border-color: #e1e5ea !important;
 	--bs-card-border-radius: 16px !important;
+	--type-normal: #A8A77A;
+	--type-fire: #EE8130;
+	--type-water: #6390F0;
+	--type-electric: #F7D02C;
+	--type-grass: #7AC74C;
+	--type-ice: #96D9D6;
+	--type-fighting: #C22E28;
+	--type-poison: #A33EA1;
+	--type-ground: #E2BF65;
+	--type-flying: #A98FF3;
+	--type-psychic: #F95587;
+	--type-bug: #A6B91A;
+	--type-rock: #B6A136;
+	--type-ghost: #735797;
+	--type-dragon: #6F35FC;
+	--type-dark: #705746;
+	--type-steel: #B7B7CE;
+	--type-fairy: #D685AD;
 }
 
 [data-theme="dark"] {
@@ -23,12 +42,31 @@
 	--bs-danger: #ef4444 !important;
 	--bs-card-bg: #1f2937 !important;
 	--bs-card-border-color: #374151 !important;
+	--type-normal: #8F8B6F;
+	--type-fire: #D9762A;
+	--type-water: #4F7AD1;
+	--type-electric: #E0BC21;
+	--type-grass: #65A73A;
+	--type-ice: #7BB0B0;
+	--type-fighting: #A82823;
+	--type-poison: #872C86;
+	--type-ground: #C4A354;
+	--type-flying: #8776D1;
+	--type-psychic: #D43F75;
+	--type-bug: #8BA416;
+	--type-rock: #968C2E;
+	--type-ghost: #5C4677;
+	--type-dragon: #5A2FF8;
+	--type-dark: #574B40;
+	--type-steel: #9E9EBF;
+	--type-fairy: #C06A95;
 }
 
 body {
 	background-color: var(--bs-body-bg);
 	color: var(--bs-body-color);
 	transition: background-color 0.3s, color 0.3s;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .card {
