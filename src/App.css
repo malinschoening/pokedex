@@ -1,0 +1,31 @@
+.loading-container {
+	height: 50vh;
+}
+
+.spinner {
+	width: 4rem;
+	height: 4rem;
+	border: 0.4rem solid var(--bs-secondary);
+	border-top: 0.4rem solid var(--bs-primary);
+	border-right: 0.4rem solid var(--bs-info);
+	border-bottom: 0.4rem solid var(--bs-success);
+	border-left: 0.4rem solid var(--bs-primary);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loading-container p {
+	color: var(--bs-body-color);
+	font-weight: 500;
+	font-size: 1rem;
+}
