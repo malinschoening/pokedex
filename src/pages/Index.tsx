@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/layout/Layout";
 import PokemonCard from "../components/PokemonCard";
 import type { Pokemon } from "../types/pokemon";
 import { fetchPokemonList } from "../api/pokeapi";
@@ -25,7 +24,7 @@ const IndexPage: React.FC = () => {
 	}, []);
 
 	return (
-		<Layout>
+		<>
 			{loading ? (
 				<Loading message="Loading Pokémon..." />
 			) : (
@@ -37,7 +36,7 @@ const IndexPage: React.FC = () => {
 					</div>
 				</div>
 			)}
-		</Layout>
+		</>
 	);
 };
 
