@@ -16,26 +16,27 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
-		<article className="col-md-3 mb-4" role="listitem">
+		<article className="col-6 col-sm-4 col-md-3 col-xl-2 mb-4" role="listitem">
 			<Link
 				to={`/pokemon/${pokemon.name}`}
 				className="text-decoration-none"
 				aria-label={`View details for ${pokemon.name}`}
 			>
 				<div
-					className="card h-100 shadow-sm border-0 overflow-hidden rounded-3 hover-shadow"
+					className="card text-white h-100 shadow-sm overflow-hidden rounded-3 hover-shadow texture-lines"
+					style={{ backgroundColor: typeColors[mainType] }}
 					onMouseEnter={() => setHovered(true)}
 					onMouseLeave={() => setHovered(false)}
 				>
 					<div
 						className="position-relative w-100 overflow-hidden"
-						style={{ paddingTop: "100%", backgroundColor: typeColors[mainType] }}
+						style={{ paddingTop: "100%", marginTop: "-2rem" }}
 					>
 						<TypeIcon
 							className="position-absolute top-50 start-50 translate-middle"
 							style={{
-								width: "120%",
-								height: "120%",
+								width: "90%",
+								height: "90%",
 								opacity: 0.1,
 								zIndex: 1,
 								color: "currentColor",
@@ -51,8 +52,11 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
 						</div>
 					</div>
 
-					<div className="card-body d-flex flex-column align-items-center text-center">
-						<span className="text-muted fw-bold mb-1">
+					<div 
+						className="d-flex flex-column align-items-center text-center"
+						style={{ marginTop: "-2rem"}}
+						>
+						<span className="fw-bold mb-1">
 							#{pokemon.id.toString().padStart(3, "0")}
 						</span>
 						<h2 className="card-title h6 text-capitalize">{pokemon.name}</h2>

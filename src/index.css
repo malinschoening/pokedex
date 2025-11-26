@@ -29,6 +29,7 @@
 	--type-dark: #705746;
 	--type-steel: #B7B7CE;
 	--type-fairy: #D685AD;
+	--type-normal: #A8A77A;
 }
 
 [data-theme="dark"] {
@@ -80,6 +81,49 @@ body {
 	background-color: var(--bs-primary);
 	border-color: var(--bs-primary);
 	transition: background-color 0.3s, border-color 0.3s;
+}
+
+.texture-lines {
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.00) 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.06) 60%,
+    rgba(255, 255, 255, 0.12) 60%,
+    rgba(255, 255, 255, 0.12) 80%,
+    rgba(255, 255, 255, 0.20) 80%
+  );
+}
+
+.tabs-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-tabs {
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-tabs .nav-item {
+  flex: 0 0 auto;
+}
+
+.custom-tabs .nav-link {
+  border: none;
+  background: transparent;
+  color: var(--bs-secondary); 
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: color 0.2s;
+}
+
+.custom-tabs .nav-link.active {
+  color: var(--bs-body-color);
+  font-weight: bold;
 }
 
 header {

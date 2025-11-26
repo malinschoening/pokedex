@@ -15,7 +15,8 @@ import {
   Moon,
   Gem,
   Heart,
-  BarChart
+  BarChart,
+  Circle
 } from "lucide-react";
 
 export const typeColors: Record<string, string> = {
@@ -35,7 +36,8 @@ export const typeColors: Record<string, string> = {
   dragon: "var(--type-dragon)",
   dark: "var(--type-dark)",
   steel: "var(--type-steel)",
-  fairy: "var(--type-fairy)"
+  fairy: "var(--type-fairy)",
+  normal: "var(--type-normal)",
 };
 
 export const typeIcons: Record<string, React.ElementType> = {
@@ -55,7 +57,8 @@ export const typeIcons: Record<string, React.ElementType> = {
   dragon: Gem,
   dark: Moon,
   steel: Shield,
-  fairy: Star
+  fairy: Star,
+  normal: Circle
 };
 
 export const statInfo: Record<

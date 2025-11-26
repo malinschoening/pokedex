@@ -1,5 +1,6 @@
 import React from 'react'
 import ThemeToggle from "./ThemeToggle";
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
 
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
 			className="w-100 position-fixed d-flex justify-content-between align-items-center p-3 border-bottom"
 			style={{ backgroundColor: "var(--bs-body-bg)", height: '60px' }}
 		>
-			<div>Pokédex</div>
+			<Link className="text-primary text-decoration-none" to="/">Pokédex</Link>
 			<ThemeToggle />
 		</header>
 	);
