@@ -14,6 +14,10 @@
 	animation: spin 1s linear infinite;
 }
 
+.fs-8 {
+	font-size: 0.6rem;
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
@@ -38,7 +42,7 @@ main {
 	width: 60px;
 	height: 30px;
 	border-radius: 9999px;
-	background-color: var(--bs-secondary);
+	background-color: var(--bs-card-border-color);
 	border: none;
 	position: relative;
 	cursor: pointer;
@@ -123,4 +127,14 @@ main {
 
 .type-badge:hover {
 	transform: scale(1.1);
+}
+
+.whitespace-nowrap {
+	white-space: nowrap;
+}
+
+@media(min-width: 992px){
+	.fs-8 {
+		font-size: 1rem;
+	}
 }

@@ -11,6 +11,7 @@
 	--bs-card-bg: #ffffff !important;
 	--bs-card-border-color: #e1e5ea !important;
 	--bs-card-border-radius: 16px !important;
+	--bs-border-radius: 16px!important;
 	--type-normal: #A8A77A;
 	--type-fire: #EE8130;
 	--type-water: #6390F0;
@@ -73,8 +74,12 @@ body {
 .card {
 	background-color: var(--bs-card-bg);
 	border-color: var(--bs-card-border-color);
-	border-radius: var(--bs-card-border-radius);
+	border-radius: var(--bs-card-border-radius)!important;
 	transition: background-color 0.3s, border-color 0.3s;
+}
+
+.bg-card {
+	background-color: var(--bs-card-bg)!important;
 }
 
 .btn-primary {
@@ -128,4 +133,18 @@ body {
 
 header {
 	z-index: 10;
+}
+
+.progress-bar {
+	height: 10px;
+	width: 100%;
+	border-radius: 10px;
+	padding: 0.2rem;
+	background: var(--bs-card-border-color);
+}
+
+.progress-value {
+	background: var(--bs-primary);
+	border-radius: 8px;
+	height: 100%;
 }

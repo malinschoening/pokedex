@@ -39,12 +39,15 @@ const PokemonPage: React.FC = () => {
 				return (
 					<li
 						key={s.stat.name}
-						className="list-group-item d-flex justify-content-between align-items-center"
+						className="list-group-item d-flex gap-2 justify-content-between align-items-center"
 					>
-						<span className="d-flex align-items-center gap-2">
+						<span className="d-flex align-items-center gap-2 whitespace-nowrap">
 							{stat?.icon && <stat.icon size={18} />}
 							{stat?.label || s.stat.name}
 						</span>
+						<div className="progress-bar">
+							<div className="progress-value" style={{ width: `${s.base_stat}%`}}></div>
+						</div>
 						<span>{s.base_stat}</span>
 					</li>
 				);
@@ -57,8 +60,8 @@ const PokemonPage: React.FC = () => {
 			{pokemon.abilities.map((ab) => (
 				<span
 					key={ab.ability.name}
-					className="badge text-capitalize"
-					style={{ backgroundColor: abilityBadgeColor, color: "#fff" }}
+					className="badge text-white text-capitalize"
+					style={{ backgroundColor: abilityBadgeColor }}
 				>
 					{ab.ability.name}
 					{ab.is_hidden ? " (Hidden)" : ""}
@@ -69,39 +72,54 @@ const PokemonPage: React.FC = () => {
 
 	const SizeContent = () => (
 		<p className="mb-0 text-center text-md-start">
-			<strong>Wt:</strong> {pokemon.weight} | <strong>Ht:</strong> {pokemon.height}
+			<strong>Weight:</strong> {pokemon.weight} | <strong>Height:</strong> {pokemon.height}
 		</p>
 	);
 
 	const MovesContent = () => (
 		<div className="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-			{pokemon.moves.slice(0, 12).map((move) => (
+			{pokemon.moves.map((move) => (
 				<span
 					key={move.move.name}
-					className="badge text-capitalize"
-					style={{ backgroundColor: moveBadgeColor, color: "#fff" }}
+					className="badge text-white text-capitalize"
+					style={{ backgroundColor: moveBadgeColor }}
 				>
 					{move.move.name}
 				</span>
 			))}
-			{pokemon.moves.length > 12 && <span>…more</span>}
 		</div>
 	);
 
 	return (
 		<div
-			className="min-vh-100 py-5 texture-lines"
-			style={{ backgroundColor: typeColors[mainType], transition: "background-color 0.5s" }}
+			className="min-vh-100 pb-3 texture-lines d-flex flex-column"
+			style={{ backgroundColor: typeColors[mainType], transition: "background-color 0.5s", marginTop: "-60px", paddingTop: "60px"}}
 		>
-			<div className="container">
-				<div className="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
-					<h2 className="text-capitalize mb-3 mb-md-0 text-white">{pokemon.name}</h2>
-					<span className="badge bg-secondary p-2 fs-6" style={{ marginBottom: "5.5rem" }}>
+			<div className="container d-flex flex-column flex-grow-1" style={{ marginBottom: "60px" }}>
+				<div className="d-flex justify-content-between mb-4 text-white">
+					<span>
+						<h2 className="text-capitalize text-white">{pokemon.name}</h2>
+						<div className="d-flex gap-2 flex-wrap">
+							{pokemon.types.map((t) => (
+								<span
+									key={t.type.name}
+									className="badge rounded-pill text-capitalize text-white"
+									style={{
+										backgroundColor: typeColors[t.type.name] || "#888",
+										minWidth: 70
+									}}
+								>
+									{t.type.name}
+								</span>
+							))}
+						</div>
+					</span>
+					<span className="fw-bold fs-6" style={{ marginBottom: "5.5rem" }}>
 						#{pokemon.id.toString().padStart(3, "0")}
 					</span>
 				</div>
 
-				<div className="card mx-auto mx-md-0 shadow-lg position-relative overflow-visible">
+				<div className="card flex-grow-1 rounded-xl shadow-lg position-relative overflow-visible h-100">
 					<div className="position-relative d-flex justify-content-center" style={{ marginTop: "-6rem" }}>
 						{TypeIcon && (
 							<TypeIcon
@@ -109,16 +127,16 @@ const PokemonPage: React.FC = () => {
 								style={{
 									width: "120px",
 									height: "120px",
-									top: "50%",
+									top: "20%",
 									left: "50%",
 									transform: "translate(-50%, -50%)",
-									opacity: 0.1,
+									opacity: 0.05,
 									color: "black",
-									zIndex: 1
+									zIndex: 0
 								}}
 							/>
 						)}
-						<div style={{ width: 150, height: 150, zIndex: 2 }}>
+						<div className="relative" style={{ width: 150, height: 150, zIndex: 2 }}>
 							<PokemonSpriteFlip
 								front={pokemon.sprites.front_default}
 								back={pokemon.sprites.back_default || ""}
@@ -128,26 +146,9 @@ const PokemonPage: React.FC = () => {
 							/>
 						</div>
 					</div>
-
-					<div className="card-body text-center text-md-start">
-						<div className="mb-3 d-flex justify-content-center justify-content-md-start gap-2 flex-wrap">
-							{pokemon.types.map((t) => (
-								<span
-									key={t.type.name}
-									className="badge rounded-pill text-capitalize"
-									style={{
-										backgroundColor: typeColors[t.type.name] || "#888",
-										color: "#fff",
-										minWidth: 70
-									}}
-								>
-									{t.type.name}
-								</span>
-							))}
-						</div>
-
+					<div className="card-body pt-0 text-center text-md-start">
 						<div className="tabs-wrapper mb-3 d-md-none">
-							<ul className="nav nav-tabs border-0 custom-tabs flex-nowrap overflow-auto">
+							<ul className="nav nav-tabs border-0 custom-tabs flex-nowrap overflow-hidden">
 								{["stats", "skills", "size", "moves"].map((tab) => (
 									<li className="nav-item fs-7" key={tab}>
 										<button
@@ -161,7 +162,6 @@ const PokemonPage: React.FC = () => {
 								))}
 							</ul>
 						</div>
-
 						<div className="tab-content d-md-none">
 							{activeTab === "stats" && <StatsContent />}
 							{activeTab === "skills" && <SkillsContent />}
