@@ -46,7 +46,7 @@ const PokemonPage: React.FC = () => {
 							{stat?.label || s.stat.name}
 						</span>
 						<div className="progress-bar">
-							<div className="progress-value" style={{ width: `${s.base_stat}%`}}></div>
+							<div className="progress-value" style={{ width: `${s.base_stat}%` }}></div>
 						</div>
 						<span>{s.base_stat}</span>
 					</li>
@@ -93,7 +93,7 @@ const PokemonPage: React.FC = () => {
 	return (
 		<div
 			className="min-vh-100 pb-3 texture-lines d-flex flex-column"
-			style={{ backgroundColor: typeColors[mainType], transition: "background-color 0.5s", marginTop: "-60px", paddingTop: "60px"}}
+			style={{ backgroundColor: typeColors[mainType], transition: "background-color 0.5s", marginTop: "-60px", paddingTop: "60px" }}
 		>
 			<div className="container d-flex flex-column flex-grow-1" style={{ marginBottom: "60px" }}>
 				<div className="d-flex justify-content-between mb-4 text-white">
@@ -170,12 +170,20 @@ const PokemonPage: React.FC = () => {
 						</div>
 						<div className="tab-content d-none d-md-block">
 							<div className="row">
-								<div className="col-md-7">
+								<div className="col-12 py-2 py-lg-3">
+									<h3>Stats</h3>
 									<StatsContent />
+								</div>
+								<div className="col-md-7 py-2 py-lg-3">
+									<h3>Size</h3>
+									<SizeContent />
+								</div>
+								<div className="col-md-5 py-2 py-lg-3">
+									<h3>Skills</h3>
 									<SkillsContent />
 								</div>
-								<div className="col-md-5">
-									<SizeContent />
+								<div className="col-12 py-2 py-lg-3">
+									<h3>Moves</h3>
 									<MovesContent />
 								</div>
 							</div>
