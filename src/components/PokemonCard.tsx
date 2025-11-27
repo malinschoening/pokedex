@@ -24,53 +24,53 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
 			>
 				<div
 					className="card text-white h-100 shadow-sm overflow-hidden rounded-3 hover-shadow texture-lines"
-					style={{ backgroundColor: typeColors[mainType] }}
+					style={{ backgroundColor: typeColors[mainType], minHeight: "10rem" }}
 					onMouseEnter={() => setHovered(true)}
 					onMouseLeave={() => setHovered(false)}
 				>
-					<div
-						className="position-relative w-100 overflow-hidden"
-						style={{ paddingTop: "100%", marginTop: "-2rem" }}
-					>
-						<TypeIcon
-							className="position-absolute top-50 start-50 translate-middle"
-							style={{
-								width: "90%",
-								height: "90%",
-								opacity: 0.1,
-								zIndex: 1,
-								color: "currentColor",
-							}}
-						/>
-						<div className="position-absolute top-50 start-50 translate-middle w-75 h-75" style={{ zIndex: 2 }}>
-							<PokemonSpriteFlip
-								front={pokemon.sprites.front_default}
-								back={pokemon.sprites.back_default}
-								alt={pokemon.name}
-								flipped={hovered}
-							/>
+					<div className="card-body d-flex flex-column pe-0 pb-0">
+						<div className="d-flex justify-content-between align-items-start pe-4">
+
+							<h2 className="card-title h6 text-capitalize">{pokemon.name}</h2>
+							<span className="mb-auto fw-bold mb-1">
+								#{pokemon.id.toString().padStart(3, "0")}
+							</span>
 						</div>
-					</div>
 
-					<div 
-						className="d-flex flex-column align-items-center text-center"
-						style={{ marginTop: "-2rem"}}
-						>
-						<span className="fw-bold mb-1">
-							#{pokemon.id.toString().padStart(3, "0")}
-						</span>
-						<h2 className="card-title h6 text-capitalize">{pokemon.name}</h2>
-
-						<div className="d-flex flex-wrap justify-content-center mt-2">
-							{pokemon.types.map((t) => (
-								<span
-									key={t.type.name}
-									className="badge rounded-pill text-capitalize me-1 mb-1"
-									style={{ backgroundColor: typeColors[t.type.name], color: "#fff" }}
-								>
-									{t.type.name}
-								</span>
-							))}
+						<div className="flex-grow-1 d-flex justify-content-between">
+							<div className="pb-2 d-flex flex-column justify-content-center align-items-start mt-2">
+								{pokemon.types.map((t) => (
+									<span
+										key={t.type.name}
+										className="badge rounded-pill text-capitalize me-1 mb-1"
+										style={{ backgroundColor: typeColors[t.type.name], color: "#fff" }}
+									>
+										{t.type.name}
+									</span>
+								))}
+							</div>
+							<div className="d-flex justify-content-center mt-n4 w-100">
+								<div className="position-relative w-100 h-100">
+									<TypeIcon
+										className="position-absolute top-50 start-50 translate-middle"
+										style={{
+											width: "90%",
+											height: "90%",
+											opacity: 0.1,
+											zIndex: 1,
+											color: "currentColor"
+										}}
+									/>
+									<div className="position-absolute top-50 start-50 translate-middle w-100 h-100">
+										<PokemonSpriteFlip
+											front={pokemon.sprites.front_default}
+											back={pokemon.sprites.back_default}
+											alt={pokemon.name}
+											flipped={hovered}
+										/>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
