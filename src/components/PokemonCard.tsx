@@ -42,8 +42,8 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
 								{pokemon.types.map((t) => (
 									<span
 										key={t.type.name}
-										className="badge text-white rounded-pill text-capitalize me-1 mb-1"
-										style={{ backgroundColor: typeColors[t.type.name]}}
+										className="badge darker-border text-white rounded-pill text-capitalize me-1 mb-1"
+										style={{ "--background": typeColors[t.type.name] } as React.CSSProperties}
 									>
 										{t.type.name}
 									</span>
