@@ -23,8 +23,11 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
 				aria-label={`View details for ${pokemon.name}`}
 			>
 				<div
-					className="card text-white h-100 shadow-sm overflow-hidden rounded-3 hover-shadow texture-lines"
-					style={{ backgroundColor: typeColors[mainType], minHeight: "8rem" }}
+					className="card darker-border text-white h-100 shadow-sm overflow-hidden rounded-3 hover-shadow texture-lines"
+					style={{
+						minHeight: "8rem",
+						"--background": typeColors[mainType],
+					} as React.CSSProperties}
 					onMouseEnter={() => setHovered(true)}
 					onMouseLeave={() => setHovered(false)}
 				>
